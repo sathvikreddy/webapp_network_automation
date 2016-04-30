@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Network Config CPSA</title>
+	<style>
+    body {
+        background-image: url("/static/background.jpg")
+        
+    }
+	</style>
+</head>
+<body>
+    <div class="container">
+        <div  class="well" >
+		
+			
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+			<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+			
+			<h2 class="text-primary"><b>WELCOME TO NETWORK CONFIG. <small>-By CPSA</b></h2>
+			<!--<button type="button" id="menu_link">OSPF</button>
+			<a href="#" id="ospf_link">OSPF</a>
+			<a href="#" id="dhcp_link">DHCP</a>
+			-->
+			<h3 class="text-danger" ><center>Network Topology</center></h2>
+			<div><center>
+			<img src="/static/topology.png" alt="Topology Image" style="display:none" id ="topology" style="width:304px;height:228px;">
+			</center></div>
+<!--  Input for security -->
+				<p>
+				<div id="security"><center>
+				<strong>
+					Username: <input id = "user" type = "text" class="form-control" style="width: 300px;" />
+					Password: <input id = "pass" type = "text" class="form-control" style="width: 300px;" />
+					<button type="button" id ="fakesubmit" class="btn btn-success">Submit</button>
+				</strong>
+				</center>
+				</div>
+				<p>
+
+<!--  BUTTONS FOR OSPF AND DHCP -->
+			<div id="ospf_dhcp_button" style="display:none">
+				<button type="button" id="ospf_link" class="btn btn-primary">OSPF</button>
+				<button type="button" id="dhcp_link" class="btn btn-primary">DHCP</button>
+			</div>
+			<p>
+<!--  OSPF ROUTERS -->
+			<div id="ospf_routers" style="display:none" >
+				<strong>Please select a Router for entering OSPF configurations.
+				<p>
+				<button type="button" id="R1_link_ospf" class="btn btn-success">R1</button>
+				<button type="button" id="R2_link_ospf" class="btn btn-success">R2</button>
+				<button type="button" id="R3_link_ospf" class="btn btn-success">R3</button>
+				<button type="button" id="R4_link_ospf" class="btn btn-success">R4</button>
+			
+			</div>
+<!--  OSPF Individual ROUTERS -->
+						
+			<div id="R1_ospf_conf" style="display:none">
+				<p class="text-primary">Enter R1 OSPF Configurations:
+				<p>Process ID:
+				<form action = "." method = "POST">	
+					<input id = "in_R1_pid" type = "text" name = "pid" class="form-control"/>
+					<p >Router ID: (example: x.x.x.x)
+					<input id = "in_R1_rid" type = "text" name = "rid" class="form-control"/> 
+					<p >Interfaces on which OSPF to be configured(separated by comms):
+					<input id = "in_R1_ints" type = "text" name = "ints" class="form-control"/>
+					<p >OSPF area or R1:	
+					<input id = "in_R1_area" type = "text" name = "area" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "ospf_R1" class="btn btn-success"/>
+				</form>
+				
+			</div>
+			
+			<div id="R2_ospf_conf" style="display:none">
+				<p class="text-primary">Enter R2 OSPF Configurations:
+				<p >Process ID:	
+				<form action = "." method = "POST">	
+					<input id = "in_R2_pid" type = "text" name = "pid" class="form-control"/>
+					<p >Router ID: (example: x.x.x.x)
+					<input id = "in_R2_rid" type = "text" name = "rid" class="form-control"/> 
+					<p >Interfaces on which OSPF to be configured:
+					<input id = "in_R2_ints" type = "text" name = "ints" class="form-control"/>
+					<p >OSPF area or R1:	
+					<input id = "in_R2_area" type = "text" name = "area" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "ospf_R2" class="btn btn-success"/>
+				</form>
+			</div>
+			
+			<div id="R3_ospf_conf" style="display:none">
+				<p class="text-primary">Enter R3 OSPF Configurations:
+				<p >Process ID:	
+				<form action = "." method = "POST">	
+					<input id = "in_R3_pid" type = "text" name = "pid" class="form-control"/>
+					<p >Router ID: (example: x.x.x.x)
+					<input id = "in_R3_rid" type = "text" name = "rid" class="form-control"/> 
+					<p >Interfaces on which OSPF to be configured:
+					<input id = "in_R3_ints" type = "text" name = "ints" class="form-control"/>
+					<p >OSPF area or R1:	
+					<input id = "in_R3_area" type = "text" name = "area" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "ospf_R3" class="btn btn-success"/>
+				</form>
+			</div>
+			
+			<div id="R4_ospf_conf" style="display:none">
+				<p class="text-primary">Enter R4 OSPF Configurations:
+				<p >Process ID:	
+				<form action = "." method = "POST">	
+					<input id = "in_R4_pid" type = "text" name = "pid" class="form-control"/>
+					<p >Router ID: (example: x.x.x.x)
+					<input id = "in_R4_rid" type = "text" name = "rid" class="form-control"/> 
+					<p >Interfaces on which OSPF to be configured:
+					<input id = "in_R4_ints" type = "text" name = "ints" class="form-control"/>
+					<p >OSPF area or R1:	
+					<input id = "in_R4_area" type = "text" name = "area" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "ospf_R4" class="btn btn-success"/>
+				</form>
+			</div>
+			
+			
+<!--  DHCP ROUTERS -->			
+			<p>
+			
+			<div id="dhcp_routers" style="display:none">
+				Please select a Router for entering DHCP configurations.
+				<p>
+				<button type="button" id="R1_link_dhcp" class="btn btn-success">R1</button>
+				<button type="button" id="R2_link_dhcp" class="btn btn-success">R2</button>
+				<button type="button" id="R3_link_dhcp" class="btn btn-success">R3</button>
+				<button type="button" id="R4_link_dhcp" class="btn btn-success">R4</button>
+			
+			</div>
+<!--  DHCP Individual ROUTERS -->
+			<div id="R1_dhcp_conf" style="display:none">
+				<p class="text-primary">R1
+				<p>What role should this router play?
+				<button type="button" id="R1_server" class="btn btn-success">Server</button>
+				<button type="button" id="R1_client" class="btn btn-success">Client</button>
+							
+				<div id="R1_server_conf" style="display:none">
+				
+				<p class="text-primary">R1 Configurations as Server:
+				<p>DHCP Pool Name:	
+				<form action = "." method = "POST">
+					<input id = "in_R1_dhcp_server_pool" type = "text"  name = "pool" class="form-control"/>
+					<p>Network Address to be assigned: (example: x.x.x.x)
+					<input id = "in_R1_dhcp_server_ints" type = "text"  name = "naddr" class="form-control"/>
+					<p>Subnet of Network: (example: /24)
+					<input id = "in_R1_dhcp_server_subnet" type = "text"  name = "subnet" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R1_server" class="btn btn-success"/>
+				</form>
+				</div>
+				
+				<div id="R1_client_conf" style="display:none">
+				<p class="text-primary">R1 Configurations as Client:
+				<p>Which interface of R1 would you like to make as a client? (example: fa 1/1)
+				<form action = "." method = "POST">
+					<input type="text" id = "in_R1_dhcp_client_int"  name = "int" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R1_client" class="btn btn-success"/>
+				</form>
+				</div>
+								
+			</div>
+			
+			<div id="R2_dhcp_conf" style="display:none">
+				<p class="text-primary">R2
+				<p>What role should this router play?
+				<button type="button" id="R2_server" class="btn btn-success">Server</button>
+				<button type="button" id="R2_client" class="btn btn-success">Client</button>
+							
+				<div id="R2_server_conf" style="display:none">
+				
+				<p class="text-primary">R2 Configurations as Server:
+				<p>DHCP Pool Name:	
+				<form action = "." method = "POST">
+					<input id = "in_R2_dhcp_server_pool" type = "text"  name = "pool" class="form-control"/>
+					<p>Network Address to be assigned: (example: x.x.x.x)
+					<input id = "in_R2_dhcp_server_ints" type = "text"  name = "naddr" class="form-control"/>
+					<p>Subnet of Network: (example: /24)
+					<input id = "in_R2_dhcp_server_subnet" type = "text"  name = "subnet" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R2_server" class="btn btn-success"/>
+				</form>
+								
+				</div>
+				
+				<div id="R2_client_conf" style="display:none">
+				
+				<p class="text-primary">R2 Configurations as Client:
+				<p>Which interface of R2 would you like to make as a client? (example: fa 1/1)
+				<form action = "." method = "POST">
+					<input type="text" id = "in_R2_dhcp_client_int"  name = "int" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R2_client" class="btn btn-success"/>
+				</form>
+				</div>
+				
+								
+			</div>
+			
+			<div id="R3_dhcp_conf" style="display:none">
+				<p class="text-primary">R3
+				<p>What role should this router play?
+				<button type="button" id="R3_server" class="btn btn-success">Server</button>
+				<button type="button" id="R3_client" class="btn btn-success">Client</button>
+							
+				<div id="R3_server_conf" style="display:none">
+				
+				<p class="text-primary">R3 Configurations as Server:
+				<p>DHCP Pool Name:	
+				<form action = "." method = "POST">
+					<input id = "in_R3_dhcp_server_pool" type = "text"  name = "pool" class="form-control"/>
+					<p>Network Address to be assigned: (example: x.x.x.x)
+					<input id = "in_R3_dhcp_server_ints" type = "text"  name = "naddr" class="form-control"/>
+					<p>Subnet of Network: (example: /24)
+					<input id = "in_R3_dhcp_server_subnet" type = "text"  name = "subnet" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R3_server" class="btn btn-success"/>
+				</form>
+								
+				</div>
+				
+				<div id="R3_client_conf" style="display:none">
+				
+				<p class="text-primary">R3 Configurations as Client:
+				<p>Which interface of R3 would you like to make as a client? (example: fa 1/1)
+				<form action = "." method = "POST">
+					<input type="text" id = "in_R3_dhcp_client_int"  name = "int" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R3_client" class="btn btn-success"/>
+				</form>
+				</div>
+				
+								
+			</div>
+			
+			<div id="R4_dhcp_conf" style="display:none">
+				<p class="text-primary">R4
+				<p>What role should this router play?
+				<button type="button" id="R4_server" class="btn btn-success">Server</button>
+				<button type="button" id="R4_client" class="btn btn-success">Client</button>
+							
+				<div id="R4_server_conf" style="display:none">
+				
+				<p class="text-primary">R4 Configurations as Server:
+				<p>DHCP Pool Name:	
+				<form action = "." method = "POST">
+					<input id = "in_R4_dhcp_server_pool" type = "text"  name = "pool" class="form-control"/>
+					<p>Network Address to be assigned: (example: x.x.x.x)
+					<input id = "in_R4_dhcp_server_ints" type = "text"  name = "naddr" class="form-control"/>
+					<p>Subnet of Network: (example: /24)
+					<input id = "in_R4_dhcp_server_subnet" type = "text"  name = "subnet" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R4_server" class="btn btn-success"/>
+				</form>
+								
+				</div>
+				
+				<div id="R4_client_conf" style="display:none">
+				
+				<p class="text-primary">R4 Configurations as Client:
+				<p>Which interface of R4 would you like to make as a client? (example: fa 1/1)
+				<form action = "." method = "POST">
+					<input type="text" id = "in_R4_dhcp_client_int"  name = "int" class="form-control"/>
+					<p>
+					<input id = "submit_button" type = "submit" value="Send" name = "dhcp_R4_client" class="btn btn-success"/>
+				</form>
+				</div>
+				
+								
+			</div>
+			
+			<div id="R1" style="display:none">
+
+			<!-- <form action="#" method="post" encrypt="multipart/form-data">
+				OSPF area number for R1:
+				<input id= "submittext" type="text" value="" />
+				<input type="button" value="Save" onclick="onsubmit()" />
+				
+			</form> -->
+			
+				
+			</div>
+			
+			<div id="main_menu" style="display:none">
+			
+				<button type="button" id="main_menu_link"  class="btn btn-danger">Main Menu</button>
+			
+			
+			</div>
+                       
+        </div>
+    </div>
+		<script type="text/javascript" src="/static/js/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/netman.js"></script>
+	</body>
+	
+</html>
